@@ -21,7 +21,9 @@ train_label = OneHotEncoder(train_label)
 test_label = test[:, 0]
 test_label = OneHotEncoder(test_label)
 print('converted labels')
-model = bp.backprop(train[:, 1:]/255, train_label, 2, 256, max_iter = 1000, eta = 0.002, f_type = "C", b_type = "R", b = 100, disp_step = 10)
+hidden_layers = [1024, 256]
+model = bp.backprop(train[:, 1:]/255, train_label, 2, hidden_layers, max_iter = 1000, eta = 0.002, f_type = "C", b_type = "R", b = 100, disp_step = 10)
+model.fit()
 input_num = 0
 while(input_num != 'E' or input_num != 'e'):
     input_num = str(input("Enter a number, press E to exit: "))
